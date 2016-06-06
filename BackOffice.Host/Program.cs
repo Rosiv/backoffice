@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using System;
 using TinyIoC;
 
 namespace BackOffice.Host
@@ -8,7 +9,16 @@ namespace BackOffice.Host
         static void Main(string[] args)
         {
             RegisterDependencies();
-            Log.Information("Hello");
+            Log.Information("Hello from BackOffice!");
+
+            try
+            {
+
+            }
+            catch(Exception ex)
+            {
+                Log.Error(ex, "Critical exception occured. Application will close.");
+            }
         }
 
         static void RegisterDependencies()
