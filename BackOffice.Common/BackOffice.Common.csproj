@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{98B17B06-6D00-4303-9F46-77576C56E46F}</ProjectGuid>
+    <ProjectGuid>{446E92BD-E769-4C02-BC84-6172C55995BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BackOffice</RootNamespace>
-    <AssemblyName>BackOffice</AssemblyName>
+    <RootNamespace>BackOffice.Common</RootNamespace>
+    <AssemblyName>BackOffice.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,28 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackOfficeService.cs" />
-    <Compile Include="EventHandler.cs" />
-    <Compile Include="Events\SimpleEvent.cs" />
+    <Compile Include="Logging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TinyIoC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BackOffice.Common\BackOffice.Common.csproj">
-      <Project>{446E92BD-E769-4C02-BC84-6172C55995BB}</Project>
-      <Name>BackOffice.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BackOffice.EventProviders.SqlEventProvider\BackOffice.EventProviders.SqlEventProvider.csproj">
-      <Project>{42686e88-237c-4f06-a63c-98fb0f9862e1}</Project>
-      <Name>BackOffice.EventProviders.SqlEventProvider</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BackOffice.Interfaces\BackOffice.Interfaces.csproj">
-      <Project>{6e613bc6-4174-4e5d-921c-b6b92b0d8458}</Project>
-      <Name>BackOffice.Interfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,5 +2,6 @@
 {
     internal interface IEvent
     {
+        string Name { get; }
     }
 }

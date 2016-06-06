@@ -53,11 +53,28 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TinyIoC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BackOffice.Common\BackOffice.Common.csproj">
+      <Project>{446E92BD-E769-4C02-BC84-6172C55995BB}</Project>
+      <Name>BackOffice.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BackOffice.EventProviders.SqlEventProvider\BackOffice.EventProviders.SqlEventProvider.csproj">
+      <Project>{42686e88-237c-4f06-a63c-98fb0f9862e1}</Project>
+      <Name>BackOffice.EventProviders.SqlEventProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BackOffice.Interfaces\BackOffice.Interfaces.csproj">
+      <Project>{6e613bc6-4174-4e5d-921c-b6b92b0d8458}</Project>
+      <Name>BackOffice.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BackOffice\BackOffice.csproj">
+      <Project>{98b17b06-6d00-4303-9f46-77576c56e46f}</Project>
+      <Name>BackOffice</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
