@@ -2,7 +2,6 @@
 using BackOffice.EventProviders.SqlEventProvider;
 using Serilog;
 using System;
-using System.Threading.Tasks;
 using TinyIoC;
 
 namespace BackOffice.Host
@@ -31,10 +30,6 @@ namespace BackOffice.Host
 
         static void RegisterDependencies()
         {
-            container.AutoRegister();
-            container.Register(new SqlEventProvider());
-            container.Register(new TaskFactory());
-
             Log.Logger = new LoggerConfiguration()
                         .MinimumLevel.Debug()
                         .Enrich.FromLogContext()
@@ -46,6 +41,8 @@ namespace BackOffice.Host
                         .CreateLogger();
 
             container.Register(Log.Logger);
+            container.AutoRegister();
+            container.Register(new SqlEventProvider());
         }
     }
 }
