@@ -16,7 +16,7 @@ namespace BackOffice.EventProviders.SqlEventProvider
 
         public SqlEventProvider()
         {
-            this.connection = new SqlConnection(string.Format(connectionStringFormat, dataBaseFile);
+            this.connection = new SqlConnection(string.Format(connectionStringFormat, dataBaseFile));
             if (!SqlHelper.DbExists(this.connection))
             {
                 SqlHelper.InitDb(this.connection);
