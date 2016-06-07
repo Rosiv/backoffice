@@ -7,8 +7,6 @@ namespace BackOffice.EventProviders.SqlEventProvider
 {
     class SqlHelper
     {
-        
-
         internal static bool DbExists(SqlConnection connection)
         {
             Logging.Log().Debug("Checking if BackOffice DB exists in localdb...");
@@ -45,20 +43,24 @@ namespace BackOffice.EventProviders.SqlEventProvider
 
         internal static void InitDb(SqlConnection connection)
         {
-            //Logging.Log().Debug("Initializing BackOffice DB...");
-            //string scriptPath = new Uri(Path.Combine(executionPath, "SqlScripts", "CreateDB.sql")).LocalPath;
+            
+            Logging.Log().Debug("Initializing BackOffice DB...");
+            string scriptPath = new Uri(Path.Combine(PathFinder.ExecutionPath, "SqlScripts", "CreateDB.sql")).LocalPath;
 
-            //Logging.Log().Debug("Loading script file from {path}", scriptPath);
+            Logging.Log().Debug("Loading script file from {path}", scriptPath);
 
-            //var scriptContent = File.ReadAllText(scriptPath);
+            var scriptContentFormat = File.ReadAllText(scriptPath);
+            var dbFilesDir = new Uri(Path.Combine(PathFinder.SolutionDir.FullName, "DBs")).LocalPath;
+            var mdfFilePath = Path.Combine(dbFilesDir, "BackOffice.mdf");
+            var ldfFilePath = Path.Combine(dbFilesDir, "BackOffice_log.ldf");
+            var scriptContent = string.Format(scriptContentFormat, mdfFilePath, ldfFilePath);
 
-            //Logging.Log().Debug("Executing sql script: \r\n{script}", scriptContent);
+            Logging.Log().Debug("Executing sql script: \r\n{script}", scriptContent);
 
-            //connection.OpenIfClosed();
+            connection.OpenIfClosed();
 
-            //SqlCommand cmd = new SqlCommand(scriptContent, connection);
-
-//            cmd.ExecuteNonQuery();
+            SqlCommand cmd = new SqlCommand(scriptContent, connection);
+            cmd.ExecuteNonQuery();
         }
 
     }
