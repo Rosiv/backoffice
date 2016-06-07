@@ -27,6 +27,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOffice.Jobs.Interfaces", "BackOffice.Jobs.Interfaces\BackOffice.Jobs.Interfaces.csproj", "{0F7AA34E-697B-49B4-9230-4ACD2983A264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOffice.Jobs.Queues.MongoDB", "BackOffice.Jobs.Queues.MongoDB\BackOffice.Jobs.Queues.MongoDB.csproj", "{2E1B3EEE-15E3-4BF2-810B-AB4E0CACC55E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{333FEF9F-D1B2-4451-BA5D-B4DC0A653C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{333FEF9F-D1B2-4451-BA5D-B4DC0A653C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{333FEF9F-D1B2-4451-BA5D-B4DC0A653C37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F7AA34E-697B-49B4-9230-4ACD2983A264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F7AA34E-697B-49B4-9230-4ACD2983A264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F7AA34E-697B-49B4-9230-4ACD2983A264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F7AA34E-697B-49B4-9230-4ACD2983A264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E1B3EEE-15E3-4BF2-810B-AB4E0CACC55E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E1B3EEE-15E3-4BF2-810B-AB4E0CACC55E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E1B3EEE-15E3-4BF2-810B-AB4E0CACC55E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E1B3EEE-15E3-4BF2-810B-AB4E0CACC55E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
