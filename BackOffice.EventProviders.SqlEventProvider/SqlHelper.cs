@@ -43,8 +43,14 @@ namespace BackOffice.EventProviders.SqlEventProvider
 
         internal static void InitDb(SqlConnection connection)
         {
-            
+
             Logging.Log().Debug("Initializing BackOffice DB...");
+            CreateDb(connection);
+            EnableBroker(connection);
+        }
+
+        private static void CreateDb(SqlConnection connection)
+        {
             string scriptPath = new Uri(Path.Combine(PathFinder.ExecutionPath, "SqlScripts", "CreateDB.sql")).LocalPath;
 
             Logging.Log().Debug("Loading script file from {path}", scriptPath);
@@ -63,5 +69,21 @@ namespace BackOffice.EventProviders.SqlEventProvider
             cmd.ExecuteNonQuery();
         }
 
+        private static void EnableBroker(SqlConnection connection)
+        {
+            Logging.Log().Debug("Enabling service broker...");
+            string scriptPath = new Uri(Path.Combine(PathFinder.ExecutionPath, "SqlScripts", "EnableBroker.sql")).LocalPath;
+
+            Logging.Log().Debug("Loading script file from {path}", scriptPath);
+
+            var scriptContent = File.ReadAllText(scriptPath);
+
+            Logging.Log().Debug("Executing sql script: \r\n{script}", scriptContent);
+
+            connection.OpenIfClosed();
+
+            SqlCommand cmd = new SqlCommand(scriptContent, connection);
+            cmd.ExecuteNonQuery();
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace BackOffice
     {
         internal void Handle(IEvent upcomingEvent)
         {
-            if (upcomingEvent.GetType() == typeof(SqlEvent))
+            if (upcomingEvent is SqlEvent)
             {
                 SqlEvent e = (SqlEvent)upcomingEvent;
                 Logging.Log().Debug("Handling SQL event. Message type: {messageType} message: {message}", e.MessageType, e.Message);

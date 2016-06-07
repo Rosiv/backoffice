@@ -40,14 +40,16 @@ namespace BackOffice.EventProviders.SqlEventProvider
 
             using (var reader = cmd.ExecuteReader())
             {
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    Logging.Log().Debug(reader.GetString(0));
-                    Logging.Log().Debug(reader.GetString(1));
+                    var a = reader.GetString(0).Replace("\0", string.Empty);
+                    var b = reader.GetString(1);
+
+                    return new SqlEvent("SqlEvent", a, b);
                 }
             }
 
-            return new SimpleEvent("SQL Event");
+            throw new InvalidOperationException();
         }
     }
 }

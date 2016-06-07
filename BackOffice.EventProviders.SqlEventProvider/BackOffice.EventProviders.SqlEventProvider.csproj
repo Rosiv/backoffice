@@ -76,6 +76,9 @@
     <Content Include="SqlScripts\CreateDB.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="SqlScripts\EnableBroker.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SqlScripts\Test.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
