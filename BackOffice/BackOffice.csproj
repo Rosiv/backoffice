@@ -66,6 +66,10 @@
       <Project>{42686e88-237c-4f06-a63c-98fb0f9862e1}</Project>
       <Name>BackOffice.EventProviders.SqlEventProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BackOffice.Events\BackOffice.Events.csproj">
+      <Project>{333FEF9F-D1B2-4451-BA5D-B4DC0A653C37}</Project>
+      <Name>BackOffice.Events</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BackOffice.Interfaces\BackOffice.Interfaces.csproj">
       <Project>{6e613bc6-4174-4e5d-921c-b6b92b0d8458}</Project>
       <Name>BackOffice.Interfaces</Name>
