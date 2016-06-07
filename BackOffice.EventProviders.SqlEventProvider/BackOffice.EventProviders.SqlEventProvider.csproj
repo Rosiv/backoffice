@@ -82,6 +82,9 @@
     <Content Include="SqlScripts\Test.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="SqlScripts\Triggers\Products_AfterDelete_Trigger.sql" />
+    <Content Include="SqlScripts\Triggers\Products_AfterInsert_Trigger.sql" />
+    <Content Include="SqlScripts\Triggers\Products_AfterUpdate_Trigger.sql" />
     <Content Include="SqlScripts\WaitFor.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
