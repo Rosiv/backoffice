@@ -30,9 +30,33 @@ namespace BackOffice.EventProviders.SqlEventProvider
 
             this.connection.OpenIfClosed();
 
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = this.connection;
+            cmd.CommandText = @"DECLARE
+    @conversation uniqueidentifier,
+    @senderMsgType nvarchar(100),
+    @msg varchar(max);
 
+WAITFOR (
+    RECEIVE TOP(1)
+        @conversation=conversation_handle,
+        @msg=message_body,
+        @senderMsgType=message_type_name
+    FROM Products_Queue);
 
-            Thread.Sleep(new Random().Next(1, 10000));
+SELECT @msg AS RecievedMessage,
+       @senderMsgType AS SenderMessageType;
+
+END CONVERSATION @conversation;";
+
+            using(var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Logging.Log().Debug(reader.GetString(0));
+                    Logging.Log().Debug(reader.GetString(1));
+                }
+            }
 
             return new SimpleEvent("SQL Event");
         }
