@@ -1,4 +1,5 @@
 ﻿using BackOffice.Common;
+using BackOffice.Worker;
 using Serilog;
 using System;
 using TinyIoC;
@@ -16,6 +17,8 @@ namespace BackOffice.Worker.Host
 
             try
             {
+                var service = new WorkerService();
+                service.Start();
             }
             catch (Exception ex)
             {
