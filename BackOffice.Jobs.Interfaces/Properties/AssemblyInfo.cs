@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -34,9 +33,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: InternalsVisibleTo("BackOffice.Jobs.Queues.MongoDB")]
-[assembly: InternalsVisibleTo("BackOffice.Worker")]
-[assembly: InternalsVisibleTo("BackOffice.Worker.Host")]
-[assembly: InternalsVisibleTo("BackOffice.Jobs.Reports")]
-[assembly: InternalsVisibleTo("BackOffice.Interfaces")]
-[assembly: InternalsVisibleTo("BackOffice")]

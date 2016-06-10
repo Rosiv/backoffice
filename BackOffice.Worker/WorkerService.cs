@@ -2,7 +2,7 @@
 
 namespace BackOffice.Worker
 {
-    internal class WorkerService
+    public class WorkerService
     {
         public void Start()
         {

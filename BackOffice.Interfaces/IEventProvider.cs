@@ -1,6 +1,6 @@
 ﻿namespace BackOffice.Interfaces
 {
-    internal interface IEventProvider
+    public interface IEventProvider
     {
         IEvent Next();
     }

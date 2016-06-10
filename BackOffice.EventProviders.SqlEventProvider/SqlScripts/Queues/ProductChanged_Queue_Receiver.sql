@@ -1,0 +1,1 @@
+﻿CREATE QUEUE ProductChanged_Queue_Receiver

@@ -5,7 +5,7 @@ using MongoDB.Bson;
 
 namespace BackOffice.Jobs.Queues.MongoDB
 {
-    internal class MongoDBJobQueue : IJobQueue
+    public class MongoDBJobQueue : IJobQueue
     {
         private const string ConnectionString = "mongodb://localhost:27017/";
         private const string DatabaseName = "backoffice";

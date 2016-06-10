@@ -1,6 +1,6 @@
 ﻿namespace BackOffice.Jobs.Interfaces
 {
-    internal interface IJobQueue
+    public interface IJobQueue
     {
         void Push(IJob<IJobDto> job);
         IJob<IJobDto> Pull();

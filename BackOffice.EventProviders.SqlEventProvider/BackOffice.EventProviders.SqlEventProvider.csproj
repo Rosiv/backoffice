@@ -79,12 +79,39 @@
     <Content Include="SqlScripts\EnableBroker.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="SqlScripts\Messages\ProductChanged_Msg.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlScripts\Contracts\ProductChanged_Contract.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlScripts\Queues\ProductChanged_Queue_Receiver.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlScripts\Queues\ProductChanged_Queue_Sender.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlScripts\Services\ProductChanged_Service_Receiver.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlScripts\Services\ProductChanged_Service_Sender.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlScripts\Tables\Products.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SqlScripts\Test.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SqlScripts\Triggers\Products_AfterDelete_Trigger.sql" />
-    <Content Include="SqlScripts\Triggers\Products_AfterInsert_Trigger.sql" />
-    <Content Include="SqlScripts\Triggers\Products_AfterUpdate_Trigger.sql" />
+    <Content Include="SqlScripts\Triggers\Products_AfterDelete_Trigger.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlScripts\Triggers\Products_AfterInsert_Trigger.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlScripts\Triggers\Products_AfterUpdate_Trigger.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SqlScripts\WaitFor.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

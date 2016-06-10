@@ -41,39 +41,47 @@ namespace BackOffice.EventProviders.SqlEventProvider
             throw new InvalidOperationException("That should not happen");
         }
 
+        internal static void CreateDb(SqlConnection connection)
+        {
+            Logging.Log().Debug("Creating BackOffice DB...");
+            ExecuteSqlScript(connection, @"CreateDB.sql");
+            Logging.Log().Debug("Database created.");
+        }
+
         internal static void InitDb(SqlConnection connection)
         {
-
             Logging.Log().Debug("Initializing BackOffice DB...");
-            CreateDb(connection);
-            EnableBroker(connection);
-        }
-
-        private static void CreateDb(SqlConnection connection)
-        {
-            string scriptPath = new Uri(Path.Combine(PathFinder.ExecutionPath, "SqlScripts", "CreateDB.sql")).LocalPath;
-
-            Logging.Log().Debug("Loading script file from {path}", scriptPath);
-
-            var scriptContentFormat = File.ReadAllText(scriptPath);
-            var dbFilesDir = new Uri(Path.Combine(PathFinder.SolutionDir.FullName, "DBs")).LocalPath;
-            var mdfFilePath = Path.Combine(dbFilesDir, "BackOffice.mdf");
-            var ldfFilePath = Path.Combine(dbFilesDir, "BackOffice_log.ldf");
-            var scriptContent = string.Format(scriptContentFormat, mdfFilePath, ldfFilePath);
-
-            Logging.Log().Debug("Executing sql script: \r\n{script}", scriptContent);
-
-            connection.OpenIfClosed();
-
-            SqlCommand cmd = new SqlCommand(scriptContent, connection);
-            cmd.ExecuteNonQuery();
-        }
-
-        private static void EnableBroker(SqlConnection connection)
-        {
             Logging.Log().Debug("Enabling service broker...");
-            string scriptPath = new Uri(Path.Combine(PathFinder.ExecutionPath, "SqlScripts", "EnableBroker.sql")).LocalPath;
+            ExecuteSqlScript(connection, @"EnableBroker.sql");
 
+            Logging.Log().Debug("Initializing messages...");
+            ExecuteSqlScript(connection, @"Messages\ProductChanged_Msg.sql");
+
+            Logging.Log().Debug("Initializing contracts...");
+            ExecuteSqlScript(connection, @"Contracts\ProductChanged_Contract.sql");
+
+            Logging.Log().Debug("Initializing queues...");
+            ExecuteSqlScript(connection, @"Queues\ProductChanged_Queue_Sender.sql");
+            ExecuteSqlScript(connection, @"Queues\ProductChanged_Queue_Receiver.sql");
+
+            Logging.Log().Debug("Initializing services...");
+            ExecuteSqlScript(connection, @"Services\ProductChanged_Service_Sender.sql");
+            ExecuteSqlScript(connection, @"Services\ProductChanged_Service_Receiver.sql");
+
+            Logging.Log().Debug("Initializing tables...");
+            ExecuteSqlScript(connection, @"Tables\Products.sql");
+
+            Logging.Log().Debug("Initializing triggers...");
+            ExecuteSqlScript(connection, @"Triggers\Products_AfterInsert_Trigger.sql");
+            ExecuteSqlScript(connection, @"Triggers\Products_AfterUpdate_Trigger.sql");
+            ExecuteSqlScript(connection, @"Triggers\Products_AfterDelete_Trigger.sql");
+
+            Logging.Log().Debug("Initialization finished.");
+        }
+
+        private static void ExecuteSqlScript(SqlConnection connection, string scriptName)
+        {
+            string scriptPath = new Uri(Path.Combine(PathFinder.ExecutionPath, "SqlScripts", scriptName)).LocalPath;
             Logging.Log().Debug("Loading script file from {path}", scriptPath);
 
             var scriptContent = File.ReadAllText(scriptPath);

@@ -1,6 +1,6 @@
 ﻿namespace BackOffice.Interfaces
 {
-    internal interface IEvent
+    public interface IEvent
     {
         string Name { get; }
     }

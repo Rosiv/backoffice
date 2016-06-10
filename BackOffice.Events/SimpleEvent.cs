@@ -2,7 +2,7 @@
 
 namespace BackOffice.Events
 {
-    internal class SimpleEvent : IEvent
+    public class SimpleEvent : IEvent
     {
         private readonly string name;
 

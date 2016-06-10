@@ -1,7 +1,12 @@
 ﻿using BackOffice.Common;
 using BackOffice.EventProviders.SqlEventProvider;
+using BackOffice.Interfaces;
+using BackOffice.Jobs.Interfaces;
+using BackOffice.Jobs.Queues.MongoDB;
 using Serilog;
 using System;
+using System.Globalization;
+using System.Threading;
 using TinyIoC;
 
 namespace BackOffice.Host
@@ -12,6 +17,10 @@ namespace BackOffice.Host
 
         static void Main(string[] args)
         {
+            //remove this later
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us");
+            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+
             RegisterDependencies();
             Logging.Log().Information("Hello from BackOffice!");
 
@@ -41,8 +50,8 @@ namespace BackOffice.Host
                         .CreateLogger();
 
             container.Register(Log.Logger);
-            container.AutoRegister();
-            container.Register(new SqlEventProvider());
+            container.Register<IEventProvider>(new SqlEventProvider());
+            container.Register<IJobQueue>(new MongoDBJobQueue());
         }
     }
 }

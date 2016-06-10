@@ -23,4 +23,3 @@ BEGIN
 	('<Message type="Product_Updated"><id>'+@id+'</id><name>'+@name+'</name><description>'+@description+'</description></Message>') 
 
 END
-GO

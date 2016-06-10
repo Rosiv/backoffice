@@ -67,9 +67,25 @@
       <Project>{42686e88-237c-4f06-a63c-98fb0f9862e1}</Project>
       <Name>BackOffice.EventProviders.SqlEventProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BackOffice.Events\BackOffice.Events.csproj">
+      <Project>{333fef9f-d1b2-4451-ba5d-b4dc0a653c37}</Project>
+      <Name>BackOffice.Events</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BackOffice.Interfaces\BackOffice.Interfaces.csproj">
       <Project>{6e613bc6-4174-4e5d-921c-b6b92b0d8458}</Project>
       <Name>BackOffice.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BackOffice.Jobs.Dto\BackOffice.Jobs.Dto.csproj">
+      <Project>{517c7d19-be01-4663-a2ea-b56600e3584c}</Project>
+      <Name>BackOffice.Jobs.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BackOffice.Jobs.Interfaces\BackOffice.Jobs.Interfaces.csproj">
+      <Project>{0f7aa34e-697b-49b4-9230-4acd2983a264}</Project>
+      <Name>BackOffice.Jobs.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BackOffice.Jobs.Queues.MongoDB\BackOffice.Jobs.Queues.MongoDB.csproj">
+      <Project>{2e1b3eee-15e3-4bf2-810b-ab4e0cacc55e}</Project>
+      <Name>BackOffice.Jobs.Queues.MongoDB</Name>
     </ProjectReference>
     <ProjectReference Include="..\BackOffice\BackOffice.csproj">
       <Project>{98b17b06-6d00-4303-9f46-77576c56e46f}</Project>

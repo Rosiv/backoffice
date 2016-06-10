@@ -1,0 +1,3 @@
+﻿CREATE SERVICE ProductChanged_Service_Receiver 
+ON QUEUE ProductChanged_Queue_Receiver 
+(ProductChanged_Contract)

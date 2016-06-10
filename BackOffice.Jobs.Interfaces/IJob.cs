@@ -1,6 +1,6 @@
 ﻿namespace BackOffice.Jobs.Interfaces
 {
-    internal interface IJob<out T> where T : IJobDto
+    public interface IJob<out T> where T : IJobDto
     {
         string Type { get; }
 

@@ -5,7 +5,7 @@ using BackOffice.Rules;
 
 namespace BackOffice
 {
-    internal class EventHandler
+    public class EventHandler
     {
         private readonly IJobQueue queue;
 
@@ -26,7 +26,7 @@ namespace BackOffice
 
             foreach (var rule in rules)
             {
-                Logging.Log().Debug("Checking rule {rule}...");
+                Logging.Log().Debug("Checking rule {rule}...", rule);
                 if (rule.IsApplicable())
                 {
                     Logging.Log().Debug("Rule {rule} is applicable for an event {event}", rule, upcomingEvent);

@@ -1,7 +1,4 @@
-﻿DROP TRIGGER Products_AfterDelete_Trigger
-GO
-
-CREATE TRIGGER Products_AfterDelete_Trigger
+﻿CREATE TRIGGER Products_AfterDelete_Trigger
     ON [BackOffice].[dbo].[Products]
  AFTER DELETE
 AS
@@ -26,4 +23,3 @@ BEGIN
 	('<Message type="Product_Deleted"><id>'+@id+'</id><name>'+@name+'</name><description>'+@description+'</description></Message>') 
 
 END
-GO

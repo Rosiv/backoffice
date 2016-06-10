@@ -8,7 +8,7 @@ using TinyIoC;
 
 namespace BackOffice
 {
-    internal class BackOfficeService
+    public class BackOfficeService
     {
         private readonly EventHandler eventHandler;
         private readonly IEnumerable<IEventProvider> eventProviders;

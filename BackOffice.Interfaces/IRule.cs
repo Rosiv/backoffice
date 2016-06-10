@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BackOffice.Interfaces
 {
-    internal interface IRule
+    public interface IRule
     {
         bool IsApplicable();
 

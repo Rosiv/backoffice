@@ -3,7 +3,7 @@ using BackOffice.Jobs.Interfaces;
 
 namespace BackOffice.Jobs.Reports
 {
-    internal class AProductSimpleTxtReport : IJob<Product>
+    public class AProductSimpleTxtReport : IJob<Product>
     {
         public AProductSimpleTxtReport(Product product)
         {
