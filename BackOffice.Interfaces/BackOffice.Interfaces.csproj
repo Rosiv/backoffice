@@ -42,7 +42,14 @@
   <ItemGroup>
     <Compile Include="IEvent.cs" />
     <Compile Include="IEventProvider.cs" />
+    <Compile Include="IRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BackOffice.Jobs.Interfaces\BackOffice.Jobs.Interfaces.csproj">
+      <Project>{0f7aa34e-697b-49b4-9230-4acd2983a264}</Project>
+      <Name>BackOffice.Jobs.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

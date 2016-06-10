@@ -2,7 +2,7 @@
 {
     internal interface IJobQueue
     {
-        void Push(IJob job);
-        IJob Pull();
+        void Push(IJob<IJobDto> job);
+        IJob<IJobDto> Pull();
     }
 }
