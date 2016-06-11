@@ -3,6 +3,8 @@ using BackOffice.Interfaces;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using System.Threading.Tasks;
 using TinyIoC;
 
@@ -36,6 +38,9 @@ namespace BackOffice
                     {
                         try
                         {
+                            //remove this later
+                            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us");
+                            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
                             var newEvent = provider.Next();
 
                             this.eventHandler.Handle(newEvent);

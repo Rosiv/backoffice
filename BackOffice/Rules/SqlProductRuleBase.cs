@@ -20,7 +20,7 @@ namespace BackOffice.Rules
             this.ev = ev;
         }
 
-        public abstract List<IJob<IJobDto>> CreateJobs();
+        public abstract List<IJob<IJobData>> CreateJobs();
 
         public abstract bool IsApplicable();
 
@@ -41,18 +41,18 @@ namespace BackOffice.Rules
             return result;
         }
 
-        protected bool TryMapMessage(out Product product)
+        protected bool TryMapMessage(out ProductMessage message)
         {
-            product = null;
+            message = null;
 
             try
             {
                 var upcomingEvent = ((SqlEvent)this.ev);
-                XmlSerializer deserializer = new XmlSerializer(typeof(Product));
+                XmlSerializer deserializer = new XmlSerializer(typeof(ProductMessage));
                 using (TextReader reader = new StringReader(upcomingEvent.Message))
                 {
-                    product = (Product)deserializer.Deserialize(reader);
-                    Logging.Log().Information("Message deserialized to 'Product' object.");
+                    message = (ProductMessage)deserializer.Deserialize(reader);
+                    Logging.Log().Information("Message deserialized to 'ProductMessage' object.");
                     return true;
                 }
             }

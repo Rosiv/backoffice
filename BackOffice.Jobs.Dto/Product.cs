@@ -3,8 +3,7 @@ using System.Xml.Serialization;
 
 namespace BackOffice.Jobs.Dto
 {
-    [XmlRoot(ElementName = "Message")]
-    public class Product : IJobDto
+    public class Product : IJobData
     {
         public int Id { get; set; }
         public string Name { get; set; }

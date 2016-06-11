@@ -17,7 +17,7 @@ namespace BackOffice.Jobs.Queues.MongoDB
             this.client = new MongoClient(ConnectionString);
         }
 
-        public IJob<IJobDto> Pull()
+        public IJob<IJobData> Pull()
         {
             var db = this.client.GetDatabase(DatabaseName);
             var collection = db.GetCollection<BsonDocument>(CollectionName);
@@ -27,7 +27,7 @@ namespace BackOffice.Jobs.Queues.MongoDB
             throw new NotImplementedException();
         }
 
-        public void Push(IJob<IJobDto> job)
+        public void Push(IJob<IJobData> job)
         {
             throw new NotImplementedException();
         }

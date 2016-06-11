@@ -1,6 +1,6 @@
 ﻿namespace BackOffice.Jobs.Interfaces
 {
-    public interface IJobDto
+    public interface IJobData
     {
     }
 }

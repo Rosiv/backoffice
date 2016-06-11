@@ -20,6 +20,6 @@ BEGIN
 
 	;SEND ON CONVERSATION @h  
 	MESSAGE TYPE ProductChanged_Msg 
-	('<Message type="Product_Updated"><Id>'+@id+'</Id><Name>'+@name+'</Name><Description>'+@description+'</Description></Message>') 
+	('<Message Action="Product_Updated"><Product><Id>'+@id+'</Id><Name>'+@name+'</Name><Description>'+@description+'</Description></Product></Message>') 
 
 END

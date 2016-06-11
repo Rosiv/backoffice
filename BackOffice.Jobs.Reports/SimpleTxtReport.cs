@@ -3,11 +3,11 @@ using BackOffice.Jobs.Interfaces;
 
 namespace BackOffice.Jobs.Reports
 {
-    public class AProductSimpleTxtReport : IJob<Product>
+    public class AProductSimpleTxtReport : IJob<ProductMessage>
     {
-        public AProductSimpleTxtReport(Product product)
+        public AProductSimpleTxtReport(ProductMessage message)
         {
-            this.Dto = product;
+            this.Data = message;
         }
 
         public string Type
@@ -19,10 +19,10 @@ namespace BackOffice.Jobs.Reports
         {
             get
             {
-                return "Txt report for all 'A products'";
+                return "Simple txt file report for all 'A products'";
             }
         }
 
-        public Product Dto { get; private set; }
+        public ProductMessage Data { get; private set; }
     }
 }

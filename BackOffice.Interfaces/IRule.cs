@@ -7,6 +7,6 @@ namespace BackOffice.Interfaces
     {
         bool IsApplicable();
 
-        List<IJob<IJobDto>> CreateJobs();
+        List<IJob<IJobData>> CreateJobs();
     }
 }

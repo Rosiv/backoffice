@@ -10,15 +10,16 @@ namespace BackOffice.Rules
 {
     internal class ProductAInsertedRule : SqlProductRuleBase
     {
-        private Product product;
+        private ProductMessage message;
 
         public ProductAInsertedRule(IEvent ev) : base(ev)
         { }
 
-        public override List<IJob<IJobDto>> CreateJobs()
+        public override List<IJob<IJobData>> CreateJobs()
         {
-            var job = new AProductSimpleTxtReport(this.product);
-            var list = new List<IJob<IJobDto>> { job };
+            var upcomingEvent = (SqlEvent)base.ev;
+            var job = new AProductSimpleTxtReport(this.message);
+            var list = new List<IJob<IJobData>> { job };
 
             return list;
         }
@@ -28,9 +29,9 @@ namespace BackOffice.Rules
             if (
                 base.CheckEventType() &&
                 base.CheckMessageType() &&
-                base.TryMapMessage(out this.product))
+                base.TryMapMessage(out this.message))
             {
-                return this.product.Name.StartsWith("A", StringComparison.InvariantCultureIgnoreCase);
+                return this.message.Product.Name.StartsWith("A", StringComparison.InvariantCultureIgnoreCase);
             }
 
             return false;

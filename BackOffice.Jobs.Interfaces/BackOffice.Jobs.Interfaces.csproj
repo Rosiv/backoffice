@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IJob.cs" />
-    <Compile Include="IJobDto.cs" />
+    <Compile Include="IJobData.cs" />
     <Compile Include="IJobQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
