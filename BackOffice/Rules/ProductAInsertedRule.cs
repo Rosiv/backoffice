@@ -4,6 +4,7 @@ using BackOffice.Interfaces;
 using BackOffice.Jobs.Interfaces;
 using BackOffice.Jobs.Dto;
 using BackOffice.Jobs.Reports;
+using BackOffice.Events;
 
 namespace BackOffice.Rules
 {
@@ -26,7 +27,7 @@ namespace BackOffice.Rules
         {
             if (
                 base.CheckEventType() &&
-                base.CheckMessageType("Inserted") &&
+                base.CheckMessageType() &&
                 base.TryMapMessage(out this.product))
             {
                 return this.product.Name.StartsWith("A", StringComparison.InvariantCultureIgnoreCase);

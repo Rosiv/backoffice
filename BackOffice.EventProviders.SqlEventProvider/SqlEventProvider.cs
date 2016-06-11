@@ -9,7 +9,7 @@ namespace BackOffice.EventProviders.SqlEventProvider
 {
     public class SqlEventProvider : IEventProvider
     {
-        const string CheckAndCreateDbConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True;Connection Timeout=7";
+        const string CheckAndCreateDbConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True";
         const string ConnectionString = CheckAndCreateDbConnectionString + ";Initial Catalog=BackOffice;";
         string dataBaseFile = Path.Combine(PathFinder.SolutionDir.FullName, "DBs", "BackOffice.mdf");
         SqlConnection connection;
@@ -43,10 +43,10 @@ namespace BackOffice.EventProviders.SqlEventProvider
             {
                 if (reader.Read())
                 {
-                    var a = reader.GetString(0).Replace("\0", string.Empty);
-                    var b = reader.GetString(1);
+                    var message = reader.GetString(0).Replace("\0", string.Empty);
+                    var messageType = reader.GetString(1);
 
-                    return new SqlEvent("SqlEvent", a, b);
+                    return new SqlEvent("SqlEvent", messageType, message);
                 }
             }
 
