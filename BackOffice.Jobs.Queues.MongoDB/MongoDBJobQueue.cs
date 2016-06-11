@@ -2,6 +2,9 @@
 using BackOffice.Jobs.Interfaces;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using Newtonsoft.Json;
+using BackOffice.Common;
 
 namespace BackOffice.Jobs.Queues.MongoDB
 {
@@ -29,7 +32,16 @@ namespace BackOffice.Jobs.Queues.MongoDB
 
         public void Push(IJob<IJobData> job)
         {
-            throw new NotImplementedException();
+            string json = JsonConvert.SerializeObject(job);
+
+            Logging.Log().Debug("Inserting job into queue: {json}", json);
+
+            BsonDocument document = BsonSerializer.Deserialize<BsonDocument>(json);
+
+            var db = this.client.GetDatabase(DatabaseName);
+            var collection = db.GetCollection<BsonDocument>(CollectionName);
+
+            collection.InsertOne(document);
         }
     }
 }

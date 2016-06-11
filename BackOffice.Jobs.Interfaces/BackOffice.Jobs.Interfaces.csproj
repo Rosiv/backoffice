@@ -43,6 +43,7 @@
     <Compile Include="IJob.cs" />
     <Compile Include="IJobData.cs" />
     <Compile Include="IJobQueue.cs" />
+    <Compile Include="JobStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

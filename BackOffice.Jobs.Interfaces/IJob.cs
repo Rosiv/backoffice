@@ -6,6 +6,8 @@
 
         string Name { get; }
 
+        JobStatus Status { get; set; }
+
         T Data { get; }
     }
 }
