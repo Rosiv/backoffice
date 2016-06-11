@@ -2,9 +2,8 @@
 using BackOffice.Jobs.Interfaces;
 using MongoDB.Driver;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
-using Newtonsoft.Json;
 using BackOffice.Common;
+using BackOffice.Jobs.Common;
 
 namespace BackOffice.Jobs.Queues.MongoDB
 {
@@ -25,23 +24,34 @@ namespace BackOffice.Jobs.Queues.MongoDB
             var db = this.client.GetDatabase(DatabaseName);
             var collection = db.GetCollection<BsonDocument>(CollectionName);
 
-            var document =  collection.Find(new BsonDocument());
+            var document = collection.Find(new BsonDocument());
 
             throw new NotImplementedException();
         }
 
         public void Push(IJob<IJobData> job)
         {
-            string json = JsonConvert.SerializeObject(job);
+            BsonDocument document = JobSerializer.ToBsonDocument(job);
 
-            Logging.Log().Debug("Inserting job into queue: {json}", json);
-
-            BsonDocument document = BsonSerializer.Deserialize<BsonDocument>(json);
+            Logging.Log().Debug("Inserting job into MongoDB queue: {document}", document);
 
             var db = this.client.GetDatabase(DatabaseName);
             var collection = db.GetCollection<BsonDocument>(CollectionName);
 
             collection.InsertOne(document);
+        }
+
+        public long Count
+        {
+            get
+            {
+                var db = this.client.GetDatabase(DatabaseName);
+                var collection = db.GetCollection<BsonDocument>(CollectionName);
+
+                var count = collection.Count(new BsonDocument());
+
+                return count;
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using BackOffice.Common;
 using BackOffice.EventProviders.SqlEventProvider;
 using BackOffice.Interfaces;
-using BackOffice.Jobs.Interfaces;
+using BackOffice.Jobs.Queues.FileSystem;
 using BackOffice.Jobs.Queues.MongoDB;
 using Serilog;
 using System;
@@ -14,6 +14,7 @@ namespace BackOffice.Host
     class Program
     {
         private static TinyIoCContainer container = TinyIoCContainer.Current;
+        private const string FallbackQueuePath = "FallbackQueue";
 
         static void Main(string[] args)
         {
@@ -26,7 +27,7 @@ namespace BackOffice.Host
 
             try
             {
-                var service = new BackOfficeService(container.Resolve<EventHandler>());
+                var service = container.Resolve<BackOfficeService>();
                 service.Start();
             }
             catch (Exception ex)
@@ -51,7 +52,14 @@ namespace BackOffice.Host
 
             container.Register(Log.Logger);
             container.Register<IEventProvider>(new SqlEventProvider());
-            container.Register<IJobQueue>(new MongoDBJobQueue());
+            var mainQueue = new MongoDBJobQueue();
+            var fallbackQueue = new FileSystemQueue(FallbackQueuePath);
+
+            
+            var eventHandler = new EventHandler(mainQueue, fallbackQueue);
+            container.Register(eventHandler);
+            var service = new BackOfficeService(eventHandler, mainQueue, fallbackQueue);
+            container.Register(service);
         }
     }
 }

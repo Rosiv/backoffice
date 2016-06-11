@@ -9,10 +9,12 @@ namespace BackOffice
     public class EventHandler
     {
         private readonly IJobQueue queue;
+        private readonly IJobQueue fallbackQueue;
 
-        public EventHandler(IJobQueue queue)
+        public EventHandler(IJobQueue queue, IJobQueue fallbackQueue)
         {
             this.queue = queue;
+            this.fallbackQueue = fallbackQueue;
         }
 
         internal void Handle(IEvent upcomingEvent)
@@ -34,7 +36,7 @@ namespace BackOffice
 
                     var jobs = rule.CreateJobs();
 
-                    Logging.Log().Debug("Rule {rule} has returned {i} jobs to enqueue.", jobs.Count);
+                    Logging.Log().Debug("Rule {rule} has returned {i} jobs to enqueue.", rule, jobs.Count);
 
                     foreach (var job in jobs)
                     {
@@ -48,7 +50,8 @@ namespace BackOffice
                         }
                         catch (Exception ex)
                         {
-                            Logging.Log().Warning("Pushing job {job} to queue failed! The job will be sent to the fallback.json file.", job.Name);
+                            Logging.Log().Warning("Pushing job {job} to queue failed! The job will be sent to the fallback queue. Exception: {ex}", job.Name, ex);
+                            this.fallbackQueue.Push(job);
                         }
                     }
                 }

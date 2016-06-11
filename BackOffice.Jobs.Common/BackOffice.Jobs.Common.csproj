@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7F8BA6ED-21B2-4833-9C57-BE39A67BB630}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{FD225269-5534-47B7-A3B6-0DFE883F89A2}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BackOffice.Host</RootNamespace>
-    <AssemblyName>BackOffice.Host</AssemblyName>
+    <RootNamespace>BackOffice.Jobs.Common</RootNamespace>
+    <AssemblyName>BackOffice.Jobs.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Bson, Version=2.2.4.26, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.2.4\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Serilog, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.1.5.14\lib\net45\Serilog.dll</HintPath>
       <Private>True</Private>
@@ -51,50 +56,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="JobSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BackOffice.Common\BackOffice.Common.csproj">
-      <Project>{446E92BD-E769-4C02-BC84-6172C55995BB}</Project>
+      <Project>{446e92bd-e769-4c02-bc84-6172c55995bb}</Project>
       <Name>BackOffice.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BackOffice.EventProviders.SqlEventProvider\BackOffice.EventProviders.SqlEventProvider.csproj">
-      <Project>{42686e88-237c-4f06-a63c-98fb0f9862e1}</Project>
-      <Name>BackOffice.EventProviders.SqlEventProvider</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BackOffice.Events\BackOffice.Events.csproj">
-      <Project>{333fef9f-d1b2-4451-ba5d-b4dc0a653c37}</Project>
-      <Name>BackOffice.Events</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BackOffice.Interfaces\BackOffice.Interfaces.csproj">
-      <Project>{6e613bc6-4174-4e5d-921c-b6b92b0d8458}</Project>
-      <Name>BackOffice.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BackOffice.Jobs.Dto\BackOffice.Jobs.Dto.csproj">
-      <Project>{517c7d19-be01-4663-a2ea-b56600e3584c}</Project>
-      <Name>BackOffice.Jobs.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\BackOffice.Jobs.Interfaces\BackOffice.Jobs.Interfaces.csproj">
       <Project>{0f7aa34e-697b-49b4-9230-4acd2983a264}</Project>
       <Name>BackOffice.Jobs.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BackOffice.Jobs.Queues.FileSystem\BackOffice.Jobs.Queues.FileSystem.csproj">
-      <Project>{e3938629-74f9-4d25-94e6-3f182c5b68fc}</Project>
-      <Name>BackOffice.Jobs.Queues.FileSystem</Name>
+    <ProjectReference Include="..\BackOffice.Jobs.Reports\BackOffice.Jobs.Reports.csproj">
+      <Project>{ce0c380c-bff3-415b-be80-cc1e87525eca}</Project>
+      <Name>BackOffice.Jobs.Reports</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BackOffice.Jobs.Queues.MongoDB\BackOffice.Jobs.Queues.MongoDB.csproj">
-      <Project>{2e1b3eee-15e3-4bf2-810b-ab4e0cacc55e}</Project>
-      <Name>BackOffice.Jobs.Queues.MongoDB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BackOffice\BackOffice.csproj">
-      <Project>{98b17b06-6d00-4303-9f46-77576c56e46f}</Project>
-      <Name>BackOffice</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

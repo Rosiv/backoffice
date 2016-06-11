@@ -14,7 +14,7 @@ namespace BackOffice.Jobs.Reports
 
         public string Type
         {
-            get { return this.GetType().FullName; }
+            get { return this.GetType().AssemblyQualifiedName; }
         }
 
         public string Name

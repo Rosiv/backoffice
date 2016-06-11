@@ -83,6 +83,10 @@
       <Project>{0f7aa34e-697b-49b4-9230-4acd2983a264}</Project>
       <Name>BackOffice.Jobs.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BackOffice.Jobs.Queues.FileSystem\BackOffice.Jobs.Queues.FileSystem.csproj">
+      <Project>{e3938629-74f9-4d25-94e6-3f182c5b68fc}</Project>
+      <Name>BackOffice.Jobs.Queues.FileSystem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BackOffice.Jobs.Queues.MongoDB\BackOffice.Jobs.Queues.MongoDB.csproj">
       <Project>{2e1b3eee-15e3-4bf2-810b-ab4e0cacc55e}</Project>
       <Name>BackOffice.Jobs.Queues.MongoDB</Name>
