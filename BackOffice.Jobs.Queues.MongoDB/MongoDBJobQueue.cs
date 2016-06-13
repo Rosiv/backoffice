@@ -23,22 +23,24 @@ namespace BackOffice.Jobs.Queues.MongoDB
         {
             var db = this.client.GetDatabase(DatabaseName);
             var collection = db.GetCollection<BsonDocument>(CollectionName);
+            var jsonJob = collection.Find(new BsonDocument()).Project(@"{""_id"":0}").First().ToJson();
+            var job = JobSerializer.Deserialize(jsonJob);
 
-            var document = collection.Find(new BsonDocument());
-
-            throw new NotImplementedException();
+            return job;
         }
 
         public void Push(IJob<IJobData> job)
         {
             BsonDocument document = JobSerializer.ToBsonDocument(job);
 
-            Logging.Log().Debug("Inserting job into MongoDB queue: {document}", document);
+            Logging.Log().Debug("Inserting job into MongoDB queue: {document}", JobSerializer.ToJson(job));
 
             var db = this.client.GetDatabase(DatabaseName);
             var collection = db.GetCollection<BsonDocument>(CollectionName);
 
-            collection.InsertOneAsync(document);
+            collection.InsertOne(document);
+
+            Logging.Log().Debug("{document} inserted into MongoDB queue.", document);
         }
 
         public long Count

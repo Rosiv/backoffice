@@ -28,6 +28,7 @@ namespace BackOffice.Jobs.Reports
         [JsonConverter(typeof(StringEnumConverter))]
         public JobStatus Status { get; set; }
 
+        [JsonProperty("Data")]
         public ProductMessage Data { get; private set; }
     }
 }

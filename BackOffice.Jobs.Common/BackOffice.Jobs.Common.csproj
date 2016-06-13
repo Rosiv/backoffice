@@ -64,6 +64,10 @@
       <Project>{446e92bd-e769-4c02-bc84-6172c55995bb}</Project>
       <Name>BackOffice.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BackOffice.Jobs.Dto\BackOffice.Jobs.Dto.csproj">
+      <Project>{517c7d19-be01-4663-a2ea-b56600e3584c}</Project>
+      <Name>BackOffice.Jobs.Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BackOffice.Jobs.Interfaces\BackOffice.Jobs.Interfaces.csproj">
       <Project>{0f7aa34e-697b-49b4-9230-4acd2983a264}</Project>
       <Name>BackOffice.Jobs.Interfaces</Name>

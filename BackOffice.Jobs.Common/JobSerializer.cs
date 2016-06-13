@@ -1,4 +1,5 @@
 ﻿using BackOffice.Common;
+using BackOffice.Jobs.Dto;
 using BackOffice.Jobs.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
