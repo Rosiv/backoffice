@@ -19,7 +19,7 @@ namespace BackOffice.Worker.Host
 
             try
             {
-                var service = new WorkerService(container.Resolve<IJobQueue>());
+                var service = new WorkerService(container.Resolve<IJobQueue>(), container.Resolve<JobHandler>());
                 service.Start();
             }
             catch (Exception ex)
@@ -44,6 +44,7 @@ namespace BackOffice.Worker.Host
 
             container.Register(Log.Logger);
             container.Register<IJobQueue>(new MongoDBJobQueue());
+            container.Register(new JobHandler());
         }
     }
 }

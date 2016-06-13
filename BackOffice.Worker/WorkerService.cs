@@ -11,11 +11,13 @@ namespace BackOffice.Worker
     public class WorkerService
     {
         private readonly IJobQueue jobQueue;
+        private readonly JobHandler handler;
         private readonly List<Task> tasks;
 
-        public WorkerService(IJobQueue jobQueue)
+        public WorkerService(IJobQueue jobQueue, JobHandler handler)
         {
             this.jobQueue = jobQueue;
+            this.handler = handler;
             this.tasks = new List<Task>();
         }
 
@@ -38,6 +40,7 @@ namespace BackOffice.Worker
                         if (job != null)
                         {
                             Logging.Log().Information("Found job to process. {job}", job);
+                            this.handler.Handle(job);
                         }
                         else
                         {

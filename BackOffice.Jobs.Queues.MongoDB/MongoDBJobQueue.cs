@@ -1,5 +1,4 @@
-﻿using System;
-using BackOffice.Jobs.Interfaces;
+﻿using BackOffice.Jobs.Interfaces;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using BackOffice.Common;
@@ -23,10 +22,15 @@ namespace BackOffice.Jobs.Queues.MongoDB
         {
             var db = this.client.GetDatabase(DatabaseName);
             var collection = db.GetCollection<BsonDocument>(CollectionName);
-            var documents = collection.Find(new BsonDocument()).Project(@"{""_id"":0}");
-            if (documents != null && documents.Count() > 0)
+            var filter = Builders<BsonDocument>.Filter.Eq("Status", JobStatus.Enqueued.ToString());
+            var update = Builders<BsonDocument>.Update.Set("Status", JobStatus.InProgress.ToString());
+
+            var doc = collection.FindOneAndUpdate(filter, update);
+
+            if (doc != null)
             {
-                var jsonJob = documents.First().ToJson();
+                doc.Remove("_id");
+                var jsonJob = doc.ToJson();
                 var job = JobSerializer.Deserialize(jsonJob);
 
                 return job;
