@@ -38,7 +38,7 @@ namespace BackOffice.Jobs.Queues.MongoDB
             var db = this.client.GetDatabase(DatabaseName);
             var collection = db.GetCollection<BsonDocument>(CollectionName);
 
-            collection.InsertOne(document);
+            collection.InsertOneAsync(document);
         }
 
         public long Count

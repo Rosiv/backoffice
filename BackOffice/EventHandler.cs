@@ -25,18 +25,18 @@ namespace BackOffice
                 new ProductAInsertedRule(upcomingEvent)
             };
 
-            Logging.Log().Debug("Checking {i} rules...", rules.Length);
+            Logging.Log().Information("=====----- Checking {i} rules -----=====", rules.Length);
 
             foreach (var rule in rules)
             {
-                Logging.Log().Debug("Checking rule {rule}...", rule);
+                Logging.Log().Information("Checking rule {rule}...", rule);
                 if (rule.IsApplicable())
                 {
-                    Logging.Log().Debug("Rule {rule} is applicable for an event {event}", rule, upcomingEvent);
+                    Logging.Log().Information("Rule {rule} is applicable for an event {event}", rule, upcomingEvent);
 
                     var jobs = rule.CreateJobs();
 
-                    Logging.Log().Debug("Rule {rule} has returned {i} jobs to enqueue.", rule, jobs.Count);
+                    Logging.Log().Information("Rule {rule} has returned {i} jobs to enqueue.", rule, jobs.Count);
 
                     foreach (var job in jobs)
                     {
@@ -44,7 +44,7 @@ namespace BackOffice
                         {
                             job.Status = JobStatus.Enqueued;
 
-                            Logging.Log().Debug("Pushing job {job} to queue...", job.Name);
+                            Logging.Log().Information("Pushing job {job} to queue...", job.Name);
 
                             this.queue.Push(job);
                         }
@@ -55,6 +55,7 @@ namespace BackOffice
                         }
                     }
                 }
+                Logging.Log().Information("=====----- Rule check finished -----=====");
             }
         }
     }
