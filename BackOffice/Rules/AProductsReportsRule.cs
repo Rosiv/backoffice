@@ -8,17 +8,17 @@ using BackOffice.Events;
 
 namespace BackOffice.Rules
 {
-    internal class ProductAInsertedRule : SqlProductRuleBase
+    internal class AProductsReportsRule : SqlProductRuleBase
     {
         private ProductMessage message;
 
-        public ProductAInsertedRule(IEvent ev) : base(ev)
+        public AProductsReportsRule(IEvent ev) : base(ev)
         { }
 
         public override List<IJob<IJobData>> CreateJobs()
         {
             var upcomingEvent = (SqlEvent)base.ev;
-            var job = new AProductSimpleTxtReport(this.message);
+            var job = new SimpleTxtReport(this.message);
             var list = new List<IJob<IJobData>> { job };
 
             return list;

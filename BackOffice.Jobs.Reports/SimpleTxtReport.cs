@@ -5,9 +5,9 @@ using Newtonsoft.Json.Converters;
 
 namespace BackOffice.Jobs.Reports
 {
-    public class AProductSimpleTxtReport : IJob<ProductMessage>
+    public class SimpleTxtReport : IJob<ProductMessage>
     {
-        public AProductSimpleTxtReport(ProductMessage message)
+        public SimpleTxtReport(ProductMessage message)
         {
             this.Data = message;
         }
@@ -21,7 +21,7 @@ namespace BackOffice.Jobs.Reports
         {
             get
             {
-                return "Simple txt file report for all 'A products'";
+                return "Simple txt file report.";
             }
         }
 

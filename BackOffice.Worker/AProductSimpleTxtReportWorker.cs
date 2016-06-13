@@ -5,10 +5,10 @@ namespace BackOffice.Worker
 {
     public class AProductSimpleTxtReportWorker
     {
-        private readonly AProductSimpleTxtReport report;
+        private readonly SimpleTxtReport report;
         private const string ReportFile = "Reports\\A_Products_Report.txt";
 
-        public AProductSimpleTxtReportWorker(AProductSimpleTxtReport report)
+        public AProductSimpleTxtReportWorker(SimpleTxtReport report)
         {
             this.report = report;
         }

@@ -13,9 +13,9 @@ namespace BackOffice.Worker
 
             switch (type.Name)
             {
-                case nameof(AProductSimpleTxtReport):
-                    Logging.Log().Information("Handling job {job}", nameof(AProductSimpleTxtReport));
-                    new AProductSimpleTxtReportWorker((AProductSimpleTxtReport)job).Start();
+                case nameof(SimpleTxtReport):
+                    Logging.Log().Information("Handling job {job}", nameof(SimpleTxtReport));
+                    new AProductSimpleTxtReportWorker((SimpleTxtReport)job).Start();
                     break;
             }
         }

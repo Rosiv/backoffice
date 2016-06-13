@@ -22,7 +22,7 @@ namespace BackOffice
             Logging.Log().Debug("Handling event {upcomingEvent}", upcomingEvent.Name);
 
             var rules = new[] {
-                new ProductAInsertedRule(upcomingEvent)
+                new AProductsReportsRule(upcomingEvent)
             };
 
             Logging.Log().Information("=====----- Checking {i} rules -----=====", rules.Length);
