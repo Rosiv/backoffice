@@ -52,7 +52,7 @@ namespace BackOffice
                         }
                         catch (Exception ex)
                         {
-                            Log.Warning(ex, "Exception occured while waiting for upcoming event.");
+                            Logging.Log().Warning(ex, "Exception occured while waiting for upcoming event.");
                         }
                     }
                 });

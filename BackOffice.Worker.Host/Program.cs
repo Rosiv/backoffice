@@ -1,4 +1,6 @@
 ﻿using BackOffice.Common;
+using BackOffice.Jobs.Interfaces;
+using BackOffice.Jobs.Queues.MongoDB;
 using BackOffice.Worker;
 using Serilog;
 using System;
@@ -17,7 +19,7 @@ namespace BackOffice.Worker.Host
 
             try
             {
-                var service = new WorkerService();
+                var service = new WorkerService(container.Resolve<IJobQueue>());
                 service.Start();
             }
             catch (Exception ex)
@@ -41,7 +43,7 @@ namespace BackOffice.Worker.Host
                         .CreateLogger();
 
             container.Register(Log.Logger);
-            container.AutoRegister();
+            container.Register<IJobQueue>(new MongoDBJobQueue());
         }
     }
 }

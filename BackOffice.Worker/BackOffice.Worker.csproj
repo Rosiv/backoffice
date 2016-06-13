@@ -68,6 +68,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BackOffice.Common\BackOffice.Common.csproj">
+      <Project>{446E92BD-E769-4C02-BC84-6172C55995BB}</Project>
+      <Name>BackOffice.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BackOffice.Jobs.Common\BackOffice.Jobs.Common.csproj">
       <Project>{fd225269-5534-47b7-a3b6-0dfe883f89a2}</Project>
       <Name>BackOffice.Jobs.Common</Name>

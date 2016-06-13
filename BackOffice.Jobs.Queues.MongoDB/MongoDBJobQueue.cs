@@ -23,10 +23,16 @@ namespace BackOffice.Jobs.Queues.MongoDB
         {
             var db = this.client.GetDatabase(DatabaseName);
             var collection = db.GetCollection<BsonDocument>(CollectionName);
-            var jsonJob = collection.Find(new BsonDocument()).Project(@"{""_id"":0}").First().ToJson();
-            var job = JobSerializer.Deserialize(jsonJob);
+            var documents = collection.Find(new BsonDocument()).Project(@"{""_id"":0}");
+            if (documents != null && documents.Count() > 0)
+            {
+                var jsonJob = documents.First().ToJson();
+                var job = JobSerializer.Deserialize(jsonJob);
 
-            return job;
+                return job;
+            }
+
+            return null;
         }
 
         public void Push(IJob<IJobData> job)
