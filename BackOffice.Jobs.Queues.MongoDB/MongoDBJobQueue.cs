@@ -3,7 +3,6 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using BackOffice.Common;
 using BackOffice.Jobs.Common;
-using System;
 
 namespace BackOffice.Jobs.Queues.MongoDB
 {

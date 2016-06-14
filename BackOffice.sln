@@ -43,6 +43,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOffice.Jobs.Queues.File
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOffice.Jobs.Common", "BackOffice.Jobs.Common\BackOffice.Jobs.Common.csproj", "{FD225269-5534-47B7-A3B6-0DFE883F89A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOffice.Web.Host", "BackOffice.Web.Host\BackOffice.Web.Host.csproj", "{BB3F8525-A575-4E09-900A-7141B397EE98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOffice.Web", "BackOffice.Web\BackOffice.Web.csproj", "{AE7F4344-41D3-4F77-A569-7D6405B0402E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +109,14 @@ Global
 		{FD225269-5534-47B7-A3B6-0DFE883F89A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD225269-5534-47B7-A3B6-0DFE883F89A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD225269-5534-47B7-A3B6-0DFE883F89A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB3F8525-A575-4E09-900A-7141B397EE98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB3F8525-A575-4E09-900A-7141B397EE98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB3F8525-A575-4E09-900A-7141B397EE98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB3F8525-A575-4E09-900A-7141B397EE98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE7F4344-41D3-4F77-A569-7D6405B0402E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE7F4344-41D3-4F77-A569-7D6405B0402E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE7F4344-41D3-4F77-A569-7D6405B0402E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE7F4344-41D3-4F77-A569-7D6405B0402E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
