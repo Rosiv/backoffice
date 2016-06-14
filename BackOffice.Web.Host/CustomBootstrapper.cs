@@ -1,4 +1,5 @@
 ﻿using Nancy;
+using Nancy.Conventions;
 using Nancy.TinyIoc;
 using Serilog;
 
@@ -21,6 +22,15 @@ namespace BackOffice.Web.Host
                        .CreateLogger();
 
             container.Register(Log.Logger);
+        }
+
+        protected override void ConfigureConventions(NancyConventions nancyConventions)
+        {
+            base.ConfigureConventions(nancyConventions);
+
+            nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("views", "views"));
+            nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("Scripts", "Scripts"));
+            nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("js", "js"));
         }
     }
 }

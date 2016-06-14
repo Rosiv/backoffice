@@ -1,7 +1,5 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using Newtonsoft.Json;
-using System;
 
 namespace BackOffice.Web
 {
@@ -25,7 +23,12 @@ namespace BackOffice.Web
 
             var docs = collection.Find(filter).ToList();
 
-            docs.ForEach(doc => doc.Remove("_id"));
+            foreach (var doc in docs)
+            {
+                string id = doc.GetElement("_id").Value.ToString();
+                doc.Remove("_id");
+                doc.Add("JobId", id);
+            }
 
             if (docs != null)
             {
