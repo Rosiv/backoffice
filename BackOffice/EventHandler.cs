@@ -21,8 +21,9 @@ namespace BackOffice
         {
             Logging.Log().Debug("Handling event {upcomingEvent}", upcomingEvent.Name);
 
-            var rules = new[] {
-                new AProductsReportsRule(upcomingEvent)
+            var rules = new IRule[] {
+                new AProductsReportsRule(upcomingEvent),
+                new BProductsReportsRule(upcomingEvent)
             };
 
             Logging.Log().Information("=====----- Checking {i} rules -----=====", rules.Length);

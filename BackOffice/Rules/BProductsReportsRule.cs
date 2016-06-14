@@ -9,17 +9,17 @@ using BackOffice.Common;
 
 namespace BackOffice.Rules
 {
-    internal class AProductsReportsRule : SqlProductRuleBase
+    internal class BProductsReportsRule : SqlProductRuleBase
     {
         private ProductMessage message;
 
-        public AProductsReportsRule(IEvent ev) : base(ev)
+        public BProductsReportsRule(IEvent ev) : base(ev)
         { }
 
         public override List<IJob<IJobData>> CreateJobs()
         {
             var upcomingEvent = (SqlEvent)base.ev;
-            var job = new SimpleTxtReport(this.message);
+            var job = new SimpleExcelReport(this.message);
             var list = new List<IJob<IJobData>> { job };
 
             return list;
@@ -32,8 +32,8 @@ namespace BackOffice.Rules
                 base.CheckMessageType() &&
                 base.TryMapMessage(out this.message))
             {
-                bool result = this.message.Product.Name.StartsWith("A", StringComparison.InvariantCultureIgnoreCase);
-                Logging.Log().Information("Product name starts with A => {result}", result);
+                bool result = message.Product.Name.StartsWith("B", StringComparison.InvariantCultureIgnoreCase);
+                Logging.Log().Information("Product name starts with B => {result}", result);
                 return result;
             }
 

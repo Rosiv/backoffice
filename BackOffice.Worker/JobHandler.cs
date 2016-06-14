@@ -17,6 +17,10 @@ namespace BackOffice.Worker
                     Logging.Log().Information("Handling job {job}", nameof(SimpleTxtReport));
                     new AProductSimpleTxtReportWorker((SimpleTxtReport)job).Start();
                     break;
+                case (nameof(SimpleExcelReport)):
+                    Logging.Log().Information("Handling job {job}", nameof(SimpleExcelReport));
+                    new BProductSimpleExcelReportWorker((SimpleExcelReport)job).Start();
+                    break;
             }
         }
     }

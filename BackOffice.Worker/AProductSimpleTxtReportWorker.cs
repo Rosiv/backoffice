@@ -1,6 +1,7 @@
 ﻿using BackOffice.Jobs.Interfaces;
 using BackOffice.Jobs.Reports;
 using System.IO;
+using System.Threading;
 
 namespace BackOffice.Worker
 {
@@ -29,6 +30,9 @@ namespace BackOffice.Worker
                 report.Data.Product.Id.ToString().PadRight(4),
                 report.Data.Product.Name.PadRight(15),
                 report.Data.Product.Description.PadRight(20));
+
+            //remove this
+            Thread.Sleep(10000);
 
             File.AppendAllLines(ReportFile, new[] { txt });
         }

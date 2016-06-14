@@ -51,6 +51,7 @@
     <Compile Include="BackOfficeService.cs" />
     <Compile Include="EventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\BProductsReportsRule.cs" />
     <Compile Include="Rules\AProductsReportsRule.cs" />
     <Compile Include="Rules\SqlProductRuleBase.cs" />
     <Compile Include="TinyIoC.cs" />
