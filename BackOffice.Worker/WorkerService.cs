@@ -40,7 +40,17 @@ namespace BackOffice.Worker
                         if (job != null)
                         {
                             Logging.Log().Information("Found job to process. {job}", job);
-                            this.handler.Handle(job);
+
+                            try
+                            {
+                                this.handler.Handle(job);
+                                this.jobQueue.SetJobStatus(job, JobStatus.Done);
+                            }
+                            catch (Exception ex)
+                            {
+                                Logging.Log().Warning("Job {job} failed! {ex}", job, ex);
+                                this.jobQueue.SetJobStatus(job, JobStatus.Failed);
+                            }
                         }
                         else
                         {

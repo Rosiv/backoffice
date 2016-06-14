@@ -68,6 +68,11 @@ namespace BackOffice.Jobs.Queues.FileSystem
             File.WriteAllText(path, json);
         }
 
+        public void SetJobStatus(IJob<IJobData> job, JobStatus status)
+        {
+            throw new NotImplementedException();
+        }
+
         public long Count
         {
             get

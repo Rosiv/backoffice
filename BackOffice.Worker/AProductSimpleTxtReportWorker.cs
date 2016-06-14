@@ -1,9 +1,10 @@
-﻿using BackOffice.Jobs.Reports;
+﻿using BackOffice.Jobs.Interfaces;
+using BackOffice.Jobs.Reports;
 using System.IO;
 
 namespace BackOffice.Worker
 {
-    public class AProductSimpleTxtReportWorker
+    public class AProductSimpleTxtReportWorker : IJobWorker
     {
         private readonly SimpleTxtReport report;
         private const string ReportFile = "Reports\\A_Products_Report.txt";

@@ -1,4 +1,6 @@
-﻿namespace BackOffice.Jobs.Interfaces
+﻿using BackOffice.Jobs.Interfaces;
+
+namespace BackOffice.Jobs.Interfaces
 {
     public interface IJobQueue
     {
@@ -7,5 +9,7 @@
         IJob<IJobData> Pull();
 
         long Count { get; }
+
+        void SetJobStatus(IJob<IJobData> job, JobStatus status);
     }
 }

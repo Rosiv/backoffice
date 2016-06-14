@@ -12,6 +12,8 @@ namespace BackOffice.Jobs.Reports
             this.Data = message;
         }
 
+        public string Id { get; set; }
+
         public string Type
         {
             get { return this.GetType().AssemblyQualifiedName; }

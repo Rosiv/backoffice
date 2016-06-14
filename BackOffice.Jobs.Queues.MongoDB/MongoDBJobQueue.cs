@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using BackOffice.Common;
 using BackOffice.Jobs.Common;
+using System;
 
 namespace BackOffice.Jobs.Queues.MongoDB
 {
@@ -29,9 +30,12 @@ namespace BackOffice.Jobs.Queues.MongoDB
 
             if (doc != null)
             {
+                //lame but works
+                string id = doc.GetElement("_id").Value.ToString();
                 doc.Remove("_id");
                 var jsonJob = doc.ToJson();
                 var job = JobSerializer.Deserialize(jsonJob);
+                job.Id = id;
 
                 return job;
             }
@@ -51,6 +55,21 @@ namespace BackOffice.Jobs.Queues.MongoDB
             collection.InsertOne(document);
 
             Logging.Log().Debug("{document} inserted into MongoDB queue.", document);
+        }
+
+        public void SetJobStatus(IJob<IJobData> job, JobStatus status)
+        {
+            Logging.Log().Debug("Updating job {job} status to {status}", job, status);
+
+            var db = this.client.GetDatabase(DatabaseName);
+            var collection = db.GetCollection<BsonDocument>(CollectionName);
+            var objectId = new ObjectId(job.Id);
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", objectId);
+            var update = Builders<BsonDocument>.Update.Set("Status", status.ToString());
+
+            collection.UpdateOne(filter, update);
+
+            Logging.Log().Debug("Updated job {job} status to {status}", job, status);
         }
 
         public long Count
