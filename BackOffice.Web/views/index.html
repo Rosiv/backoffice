@@ -78,7 +78,7 @@
                                     <!--<th>Type</th>-->
                                     <th>Status</th>
                                     <th>Data</th>
-                                    <th ng-if"job.AdditionalInfo>Additional Info</th>
+                                    <th ng-if="job.hasOwnProperty('AdditionalInfo')">Additional Info</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -88,7 +88,7 @@
                                     <!--<td>{{job.Type}}</td>-->
                                     <td>{{job.Status}}</td>
                                     <td>{{job.Data}}</td>
-                                    <td ng-if"job.AdditionalInfo>{{job.AdditionalInfo}}</td>
+                                    <td ng-if="job.hasOwnProperty('AdditionalInfo')">{{job.AdditionalInfo}}</td>
                                 </tr>
                             </tbody>
                         </table>

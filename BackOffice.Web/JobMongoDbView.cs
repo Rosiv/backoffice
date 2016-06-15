@@ -20,8 +20,9 @@ namespace BackOffice.Web
             var db = this.client.GetDatabase(DatabaseName);
             var collection = db.GetCollection<BsonDocument>(CollectionName);
             var filter = new BsonDocument();
+            var sort = Builders<BsonDocument>.Sort.Descending("_id");
 
-            var docs = collection.Find(filter).ToList();
+            var docs = collection.Find(filter).Sort(sort).ToList();
 
             foreach (var doc in docs)
             {
