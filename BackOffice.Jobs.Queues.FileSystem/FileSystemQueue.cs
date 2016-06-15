@@ -68,7 +68,7 @@ namespace BackOffice.Jobs.Queues.FileSystem
             File.WriteAllText(path, json);
         }
 
-        public void SetJobStatus(IJob<IJobData> job, JobStatus status)
+        public void SetJobStatus(IJob<IJobData> job, JobStatus status, string additionalInfo = null)
         {
             throw new NotImplementedException();
         }

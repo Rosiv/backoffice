@@ -10,6 +10,6 @@ namespace BackOffice.Jobs.Interfaces
 
         long Count { get; }
 
-        void SetJobStatus(IJob<IJobData> job, JobStatus status);
+        void SetJobStatus(IJob<IJobData> job, JobStatus status, string additionalInfo = null);
     }
 }

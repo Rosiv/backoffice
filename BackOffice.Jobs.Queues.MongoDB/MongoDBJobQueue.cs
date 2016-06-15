@@ -56,7 +56,7 @@ namespace BackOffice.Jobs.Queues.MongoDB
             Logging.Log().Debug("{document} inserted into MongoDB queue.", document);
         }
 
-        public void SetJobStatus(IJob<IJobData> job, JobStatus status)
+        public void SetJobStatus(IJob<IJobData> job, JobStatus status, string additionalInfo = null)
         {
             Logging.Log().Debug("Updating job {job} status to {status}", job, status);
 
@@ -64,7 +64,11 @@ namespace BackOffice.Jobs.Queues.MongoDB
             var collection = db.GetCollection<BsonDocument>(CollectionName);
             var objectId = new ObjectId(job.Id);
             var filter = Builders<BsonDocument>.Filter.Eq("_id", objectId);
-            var update = Builders<BsonDocument>.Update.Set("Status", status.ToString());
+
+
+            var update = string.IsNullOrWhiteSpace(additionalInfo) ?
+                Builders<BsonDocument>.Update.Set("Status", status.ToString()) :
+                Builders<BsonDocument>.Update.Set("Status", status.ToString()).Set("AdditionalInfo", additionalInfo);
 
             collection.UpdateOne(filter, update);
 

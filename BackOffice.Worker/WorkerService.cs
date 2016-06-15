@@ -49,7 +49,7 @@ namespace BackOffice.Worker
                             catch (Exception ex)
                             {
                                 Logging.Log().Warning("Job {job} failed! {ex}", job, ex);
-                                this.jobQueue.SetJobStatus(job, JobStatus.Failed);
+                                this.jobQueue.SetJobStatus(job, JobStatus.Failed, ex.ToString());
                             }
                         }
                         else
