@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="SimpleExcelReport.cs" />
     <Compile Include="AlwaysFailingReport.cs" />
+    <Compile Include="SqlReport.cs" />
     <Compile Include="SimpleTxtReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

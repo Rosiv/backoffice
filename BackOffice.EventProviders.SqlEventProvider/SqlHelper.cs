@@ -70,6 +70,7 @@ namespace BackOffice.EventProviders.SqlEventProvider
 
             Logging.Log().Debug("Initializing tables...");
             ExecuteSqlScript(connection, @"Tables\Products.sql");
+            ExecuteSqlScript(connection, @"Tables\ProductReports.sql");
 
             Logging.Log().Debug("Initializing triggers...");
             ExecuteSqlScript(connection, @"Triggers\Products_AfterInsert_Trigger.sql");

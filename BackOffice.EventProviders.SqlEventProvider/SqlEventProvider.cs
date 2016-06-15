@@ -11,7 +11,6 @@ namespace BackOffice.EventProviders.SqlEventProvider
     {
         const string CheckAndCreateDbConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True";
         const string ConnectionString = CheckAndCreateDbConnectionString + ";Initial Catalog=BackOffice;";
-        string dataBaseFile = Path.Combine(PathFinder.SolutionDir.FullName, "DBs", "BackOffice.mdf");
         SqlConnection connection;
 
         public SqlEventProvider()

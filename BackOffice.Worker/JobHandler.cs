@@ -25,6 +25,10 @@ namespace BackOffice.Worker
                     Logging.Log().Information("Handling job {job}", nameof(AlwaysFailingReport));
                     new CProductAlwaysFailingReportWorker((AlwaysFailingReport)job).Start();
                     break;
+                case (nameof(SqlReport)):
+                    Logging.Log().Information("Handling job {job}", nameof(SqlReport));
+                    new DProductSqlReportWorker((SqlReport)job).Start();
+                    break;
             }
         }
     }

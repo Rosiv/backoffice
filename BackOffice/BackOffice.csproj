@@ -51,6 +51,7 @@
     <Compile Include="BackOfficeService.cs" />
     <Compile Include="EventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\DProductsReportsRule.cs" />
     <Compile Include="Rules\CProductsAlwaysFailingRule.cs" />
     <Compile Include="Rules\BProductsReportsRule.cs" />
     <Compile Include="Rules\AProductsReportsRule.cs" />

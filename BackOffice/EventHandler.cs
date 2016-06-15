@@ -24,7 +24,8 @@ namespace BackOffice
             var rules = new IRule[] {
                 new AProductsReportsRule(upcomingEvent),
                 new BProductsReportsRule(upcomingEvent),
-                new CProductsAlwaysFailingRule(upcomingEvent)
+                new CProductsAlwaysFailingRule(upcomingEvent),
+                new DProductsReportsRule(upcomingEvent)
             };
 
             Logging.Log().Information("=====----- Checking {i} rules -----=====", rules.Length);

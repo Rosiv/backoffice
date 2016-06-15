@@ -97,6 +97,9 @@
     <Content Include="SqlScripts\Services\ProductChanged_Service_Sender.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="SqlScripts\Tables\ProductReports.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SqlScripts\Tables\Products.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
