@@ -1,6 +1,7 @@
 ﻿using BackOffice.Jobs.Interfaces;
 using BackOffice.Jobs.Reports;
 using System;
+using System.Threading;
 
 namespace BackOffice.Worker
 {
@@ -15,6 +16,7 @@ namespace BackOffice.Worker
 
         public void Start()
         {
+            Thread.Sleep(10 * 1000);
             throw new NotImplementedException();
         }
     }
