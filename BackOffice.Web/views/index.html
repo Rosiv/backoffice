@@ -20,7 +20,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="~/Scripts/angular.js"></script>
-    <script src="js/backoffice.js"></script>
+    <script src="~/js/backoffice.js"></script>
 
 </head>
 
@@ -93,7 +93,7 @@
                             </tbody>
                         </table>
                         <br ng-if="job.Status === 'Failed'" />
-                        <button type="button" ng-if="job.Status === 'Failed'" class="btn btn-default">Retry</button>
+                        <button type="button" ng-if="job.Status === 'Failed'" ng-click="retryJob(job.JobId)" class="btn btn-default">Retry</button>
                     </div>
                 </div>
             </div>

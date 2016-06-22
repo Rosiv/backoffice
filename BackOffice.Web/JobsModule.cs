@@ -5,20 +5,27 @@ namespace BackOffice.Web
 {
     public class JobsModule : NancyModule
     {
-        private readonly JobMongoDbView view;
-
-        public JobsModule(JobMongoDbView view)
+        public JobsModule(JobMongoService mongoService)
             : base("/jobs")
         {
-            this.view = view;
-
             this.Get["/"] = parameters =>
             {
                 Logging.Log().Information("Invoked GET /jobs");
 
-                var json = this.view.GetJobs();
+                var json = mongoService.GetJobs();
 
                 return ((Response)json).WithContentType("application/json");
+            };
+
+            this.Post["/{id}/retry"] = parameters =>
+            {
+                string jobId = (string)parameters.id;
+
+                Logging.Log().Information("Invoked GET /jobs/" + jobId);
+
+                mongoService.Retry(jobId);
+
+                return HttpStatusCode.OK;
             };
         }
     }
